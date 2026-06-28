@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joris - 30 ans</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+<div id="background-logo">
+</div>
+<!-- 🌌 INTRO -->
+<div id="intro">
+    <div class="invitation">
+        <h1>Joris 30 ans</h1>
+        <p class="date">12 Septembre 2026</p>
+
+        <div class="envelope" onclick="openInvite()"></div>
+
+        <h2>💌 Vous avez reçu une invitation</h2>
+        <p>Cliquez pour ouvrir</p>
+    </div>
+</div> <!-- 👈 IMPORTANT : fermeture ici -->
+
+<!-- 🎉 CONTENU -->
+<div id="content">
+  <header>
+    <h1>🎂 30 ans de Joris🎂</h1>
+    <p class="subtitle">Une surprise organisée pour les 30 ans de JORIS! 
+      MERCI DE NE RIEN DIRE CECI EST BIEN ENTENDU UNE SURPRIIIIIIIIIIIIIIIIIIIIIIISE  ❤️</p>
+  </header>
+
+  <section class="card">
+    <h2>💌 Invitation</h2>
+    <p>
+      Nous avons le plaisir de vous inviter à célébrer les 30 ans de Joris.<br><br>
+      Une journée conviviale remplie de bonne humeur, de rires et de souvenirs.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>📅 Infos</h2>
+    <p>12 septembre 2026 — 12h00</p>
+    <p>96 Rue de Lougres, 25260 Montenois</p>
+  </section>
+
+  <section class="card">
+    <h2>🥘 Programme</h2>
+    <ul>
+      <li>​Paella​</li>
+      <li>Pétanque</li>
+      <li>Palet</li>
+      <li>Foot</li>
+      <li>Danse & fête</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>📍 Lieu</h2>
+    <iframe
+      src="https://www.google.com/maps?q=96+Rue+de+Lougres+25260+Montenois&output=embed"
+      height="250"></iframe>
+  </section>
+
+  <section class="card">
+    <h2>✅ Confirmer ma présence</h2>
+
+    <input id="name" placeholder="Nom">
+    
+    <select id="presence">
+      <option>Présent</option>
+      <option>Absent</option>
+    </select>
+
+    <input id="people" type="number" placeholder="Nombre de personnes">
+    <textarea id="message" placeholder="Message"></textarea>
+
+    <button onclick="send()">Confirmer</button>
+
+    <p id="status"></p>
+  </section>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

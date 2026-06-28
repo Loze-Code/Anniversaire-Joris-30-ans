@@ -1,0 +1,373 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(circle at top,
+    #355c7d 0%,
+    #1d3557 25%,
+    #0b1220 60%,
+    #050814 100%);
+
+  position: relative;
+}
+
+/* ⭐ étoiles background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 60px 60px, 120px 120px;
+  background-position: 0 0, 30px 30px;
+  opacity: 0.15;
+  animation: starsMove 120s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* =======================
+   INTRO
+======================= */
+
+#intro {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.invitation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =======================
+   ENVELOPPE ONE PIECE STYLE
+======================= */
+
+.envelope {
+  width: 320px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+
+  background: linear-gradient(145deg, #f5e6c8, #e7d3a0);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+.envelope:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Triangle du sceau (style pli enveloppe) */
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(145deg, #ffe08a, #facc15);
+
+  transition: transform 0.6s ease;
+}
+
+/* =======================
+   ANIMATION OUVERTURE ONE PIECE
+======================= */
+
+.envelope.open {
+  animation: openEnvelope 0.8s forwards;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+  opacity: 0;
+}
+
+@keyframes openEnvelope {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(3deg);
+  }
+  100% {
+    transform: scale(0) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* =======================
+   CONTENU
+======================= */
+
+#content {
+  display: none;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  color: #facc15;
+  font-size: 36px;
+}
+
+.subtitle {
+  opacity: 0.8;
+}
+
+/* =======================
+   CARDS
+======================= */
+
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 15px;
+
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =======================
+   FORM
+======================= */
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #facc15;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+/* =======================
+   MAP
+======================= */
+
+iframe {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* =======================
+   BONUS PREMIUM EFFECT
+======================= */
+
+/* glow léger sur les titres */
+h1, h2 {
+  text-shadow: 0 0 10px rgba(250,204,21,0.3);
+}
+#content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
+#content {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.envelope {
+  position: relative;
+  overflow: hidden;
+}
+
+/* partie gauche */
+.envelope::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: inherit;
+  transition: transform 0.8s ease;
+  transform-origin: left;
+}
+
+/* partie droite */
+.envelope.open::before {
+  transform: translateX(-120%) rotate(-15deg);
+}
+
+.envelope.open::after {
+  transform: translateX(120%) rotate(15deg);
+}
+#intro {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#content {
+  display: none;
+  opacity: 0;
+  transform: scale(1.05) translateY(20px);
+  transition: all 0.8s ease;
+}
+
+#content.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+#content {
+  display: none;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* toutes les cartes centrées */
+.card {
+  width: 100%;
+  max-width: 700px;
+}
+#content {
+  display: none;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 750px;
+  margin: 15px auto;
+}
+.card {
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+@media screen and (max-width: 768px) {
+
+  #content {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  .card {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .envelope {
+    width: 240px;
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+
+  .envelope {
+    width: 200px;
+    height: 130px;
+  }
+
+  .card {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  #content {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
